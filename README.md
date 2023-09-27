@@ -21,3 +21,8 @@
 ### Google Fonts
 
 - Se importa de Google Fonts la fuente Lato dentro de index.css
+
+### Creacion de carpeta components y componentes
+
+-Se crea la carpeta contenedora para componentes y se hacen los siguientes componentes:
+    -Navbar
