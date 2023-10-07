@@ -25,8 +25,17 @@ export function AuthContextProvider ({children}) {
         return singOut(auth)
     }
 
+    useEffect(()=>{
+        const unsuscribe = onAuthStateChanged(auth, (currentUser)=>{
+            setUser(currentUser)
+        })
+        return ()=>{
+            unsuscribe
+        }
+    },[])
+
     return (
-        <AuthContext.Provider value={{singUp, user}}>  
+        <AuthContext.Provider value={{singUp, logIn, logOut, user}}>  
             {children}
         </AuthContext.Provider>
     )
