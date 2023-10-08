@@ -14,6 +14,9 @@ const Main = () => {
 
   const movie = movies[Math.floor(Math.random() * movies.length)]; //toma un numero aleatorio de una pelicula y lo muestra cada vez que recargamos
   // const movie se usa para poder acceder a la info ramitidicada para eso se usa "?" al momento de llamar una propiedad de objeto
+  
+  const truncate = (str, n) =>
+    str.length > n ? `${str.substring(0, n - 1)} ...` : str;
 
   return (
     <div className="w-full h-[550px] text-white ">
@@ -35,7 +38,9 @@ const Main = () => {
               </button>
             </div>
             <p className='text-gray text-sm my-5'>Released: {movie?.release_date}</p>
-            <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[30%]'><span>{movie?.overview}</span></p>
+            <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[30%]'>
+              <span>{truncate(`${movie?.overview}`, 170)}</span>
+              </p>
           </div>
       </div>
     </div>
