@@ -44,7 +44,7 @@ const LogIn = () => {
                   <p className="text-sm text-gray-600">Need Help?</p>
                 </div>
                 <p className="mt-8 pt-3">
-                  <span className="mr-2 text-gray-600 text-sm">Not suscribe to Netflix yet?</span>
+                  <span className="mr-2 text-gray-600 text-sm">New to Netflix?</span>
                   <Link className="hover:cursor-pointer" to="/singup">| Sing Up</Link>
                 </p>
               </form>
