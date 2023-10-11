@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import background from '../img/Netflix-hero-banner.jpg'
 import { Link } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext';
 
 
 const SingUp = () => {
+
+  const [email, setEmail]=useState('')
+  const [password, setPassword]=useState('')
+  const {user, singUp} = UserAuth()
+
+  const handleSumbit = async (e)=>{
+    e.preventDefault()
+
+    try {
+      await singUp (email, password)
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  console.log(email)
+  console.log(password)
 
   return (
     <>
@@ -18,14 +37,16 @@ const SingUp = () => {
           <div className="max-w-[450px] h-[540px] mx-aut bg-black/75 text-white rounded-[10px]">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-center font-bold text-3xl">Sing Up</h1>
-              <form className="w-full flex flex-col py-4">
+              <form onSubmit={handleSumbit} className="w-full flex flex-col py-4">
                 <input
+                  onChange={(e)=>setEmail(e.target.value)}
                   className="py-3 px-2 my-2 bg-gray-600 rounded"
                   type="email"
                   placeholder="E-mail"
                   autoComplete="email"
                 />
                 <input
+                  onChange={(e)=>setPassword(e.target.value)}
                   className="py-3 px-2 my-2 bg-gray-600 rounded"
                   type="password"
                   placeholder="Password"
@@ -33,8 +54,6 @@ const SingUp = () => {
                 />
                 <button
                   className="bg-red-600 py-3 my-6 rounded font-bold"
-                  type="summit"
-                  onClick={(e) => e.preventDefault()}
                 >
                   Sing Up
                 </button>

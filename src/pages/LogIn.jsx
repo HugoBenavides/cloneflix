@@ -1,5 +1,5 @@
 import React from 'react'
-import background from '../img/Netflix-hero-banner2.jpg'
+import background2 from '../img/Netflix-fetaure-banner.jpeg'
 import { Link } from 'react-router-dom';
 
 const LogIn = () => {
@@ -7,7 +7,7 @@ const LogIn = () => {
     <>
       <div className="text-white w-full h-screen">
         <img
-          src={background}
+          src={background2}
           alt="/"
           className="hidden sm:block absolute w-full h-full object-cover"
         />
