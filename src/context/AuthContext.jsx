@@ -22,7 +22,7 @@ export function AuthContextProvider ({children}) {
     }
 
     function logOut (){
-        return singOut(auth)
+        return signOut(auth)
     }
 
     useEffect(()=>{

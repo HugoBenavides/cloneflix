@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import background from '../img/Netflix-hero-banner.jpg'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 
 
@@ -9,20 +9,19 @@ const SingUp = () => {
   const [email, setEmail]=useState('')
   const [password, setPassword]=useState('')
   const {user, singUp} = UserAuth()
+  const navigate = useNavigate()
 
   const handleSumbit = async (e)=>{
     e.preventDefault()
 
     try {
       await singUp (email, password)
+      navigate('/')
     } catch (error) {
       console.log(error)
     }
 
   }
-
-  console.log(email)
-  console.log(password)
 
   return (
     <>
