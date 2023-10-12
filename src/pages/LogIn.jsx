@@ -35,7 +35,7 @@ const LogIn = () => {
         />
         <div className="bg-black/60 fixed top-0 left-0 w-full h-full"></div>
         <div className="fixed w-full px-4 py-24 z-50 left-[33vw]">
-          <div className="max-w-[450px] h-[540px] mx-aut bg-black/75 text-white rounded-[10px]">
+          <div className="max-w-[450px] h-[540px] bg-black/75 text-white rounded-[10px]">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-center font-bold text-3xl">Sing In</h1>
               {error ? <p className='py-3 bg-red-400 my-2'>{error}</p> : null}
