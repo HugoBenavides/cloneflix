@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router';
 import './App.css'
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar';
 import Home from './pages/Home';
 import { AuthContextProvider } from './context/AuthContext.jsx';
 import LogIn from './pages/LogIn';

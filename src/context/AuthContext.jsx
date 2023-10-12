@@ -13,12 +13,12 @@ export function AuthContextProvider ({children}) {
 
     const [user,setUser] = useState({})
 
-    function singUp(email,passowrd){
-        return createUserWithEmailAndPassword(auth,email,passowrd)
+    function singUp(email, password){
+        return createUserWithEmailAndPassword(auth,email,password)
     }
 
-    function logIn (){
-        return signInWithEmailAndPassword(auth,email,passowrd)
+    function singIn(email, password){
+        return signInWithEmailAndPassword(auth,email,password)
     }
 
     function logOut (){
@@ -35,7 +35,7 @@ export function AuthContextProvider ({children}) {
     },[])
 
     return (
-        <AuthContext.Provider value={{singUp, logIn, logOut, user}}>  
+        <AuthContext.Provider value={{singUp, singIn, logOut, user}}>  
             {children}
         </AuthContext.Provider>
     )

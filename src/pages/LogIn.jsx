@@ -1,8 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import background2 from '../img/Netflix-fetaure-banner.jpeg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext';
 
 const LogIn = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword]=useState('')
+  const [error, setError] = useState('')
+  const {user, singIn} = UserAuth()
+  const navigate = useNavigate()
+
+  const handleSumbit = async (e) => {
+    e.preventDefault();
+    setError('')
+
+    try {
+      await singIn (email, password);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setError(error.message)
+    }
+  };
+
+
   return (
     <>
       <div className="text-white w-full h-screen">
@@ -16,14 +38,17 @@ const LogIn = () => {
           <div className="max-w-[450px] h-[540px] mx-aut bg-black/75 text-white rounded-[10px]">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-center font-bold text-3xl">Sing In</h1>
-              <form className="w-full flex flex-col py-4">
+              {error ? <p className='py-3 bg-red-400 my-2'>{error}</p> : null}
+              <form onSubmit={handleSumbit} className="w-full flex flex-col py-4">
                 <input
+                  onChange={(e)=>setEmail(e.target.value)}
                   className="py-3 px-2 my-2 bg-gray-600 rounded"
                   type="email"
                   placeholder="E-mail"
                   autoComplete="email"
                 />
                 <input
+                  onChange={(e)=>setPassword(e.target.value)}
                   className="py-3 px-2 my-2 bg-gray-600 rounded"
                   type="password"
                   placeholder="Password"
@@ -31,8 +56,6 @@ const LogIn = () => {
                 />
                 <button
                   className="bg-red-600 py-3 my-6 rounded font-bold"
-                  type="summit"
-                  onClick={(e) => e.preventDefault()}
                 >
                   Sing In
                 </button>
