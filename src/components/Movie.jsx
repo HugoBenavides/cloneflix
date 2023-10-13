@@ -1,12 +1,36 @@
 import React,{useState} from 'react'
 import {FaHeart, FaRegHeart} from 'react-icons/fa'
+import { UserAuth } from '../context/AuthContext';
+import { db } from '../firebase';
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 
 
 const Movie = ({item}) => {
   
   const [like, setLike] = useState(false);
+  const [saved,setSaved] = useState(false);
+  const {user} = UserAuth();
 
-  console.log(like);
+  const movieID = doc(db,'users',`${user?.email}`)
+
+  const saveShow = async ()=>{
+    if(user?.email){
+      setLike(!like)
+      setSaved(true)
+      await updateDoc(movieID,{
+        savedShows: arrayUnion({
+          id: item.id,
+          title: `${item.title?item.title:item.name}`,
+          img: item.backdrop_path,
+
+        })
+      })
+    }else{
+      alert('Please log in to save a movie')
+    }
+  }
+
+  //console.log(like);
 
   return (
     <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280] inline-block cursor-pointer relative p-2">
@@ -21,7 +45,7 @@ const Movie = ({item}) => {
           <span>{item?.name}</span>
         </p>
       </div>
-      <p>
+      <p onClick={saveShow}>
         {like ? 
           <FaHeart className="absolute top-4 left-4 text-gray-300" />
          : 
