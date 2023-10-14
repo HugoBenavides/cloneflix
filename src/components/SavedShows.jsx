@@ -3,6 +3,7 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+import {AiOutlineClose} from "react-icons/ai"
 
 const SavedShows = () => {
   const [movies, setMovie] = useState([]);
@@ -55,6 +56,7 @@ const SavedShows = () => {
                   <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
                     {user?.title}
                   </p>
+                  <p onClick={()=>deleteShow(user?.id)}><AiOutlineClose className="absolute text-gray-300 top-4 right-4" /></p>
                 </div>
               </div>
             ))}

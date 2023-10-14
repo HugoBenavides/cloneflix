@@ -24,7 +24,6 @@ const LogIn = () => {
     }
   };
 
-
   return (
     <>
       <div className="text-white w-full h-screen">
@@ -38,7 +37,7 @@ const LogIn = () => {
           <div className="max-w-[450px] h-[540px] bg-black/75 text-white rounded-[10px]">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-center font-bold text-3xl">Sing In</h1>
-              {error ? <p className='py-3 bg-red-400 my-2'>{error}</p> : null}
+              {error ? <p className='py-3 bg-red-400 my-2'>Invalid Email or Password</p> : null}
               <form onSubmit={handleSumbit} className="w-full flex flex-col py-4">
                 <input
                   onChange={(e)=>setEmail(e.target.value)}
