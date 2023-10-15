@@ -28,6 +28,23 @@ const SavedShows = () => {
     });
   }, [user?.email]);
 
+  const movieRef = doc(db,'users',`${user?.email}`);
+
+  const deleteShow = async (passedID)=>{
+    try {
+      
+      const result = movies.filter((item) => item?.id !== passedID)
+      
+      await updateDoc(movieRef, ({
+        savedShows: result,
+      }))
+
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
   return (
     <>
       <h2 className="text-white font-bold md:text-xl p-4">My Shows</h2>

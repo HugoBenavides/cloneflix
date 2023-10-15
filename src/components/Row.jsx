@@ -4,7 +4,7 @@ import {MdChevronLeft,MdChevronRight} from 'react-icons/md'
 import Movie from './Movie'
 
 
-const Row = ({title, fetchURL, rowId}) => {
+const Row = ({titleRow, fetchURL, rowId}) => {
   //recuerda que para importar las props es necesario usar la llaves
 
   const [movies, setMovies] = useState([]);
@@ -31,7 +31,7 @@ const Row = ({title, fetchURL, rowId}) => {
 
   return (
     <>
-      <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
+      <h2 className="text-white font-bold md:text-xl p-4">{titleRow}</h2>
       <div className="relative flex items-center group">
         <MdChevronLeft
           onClick={slideLeft}
